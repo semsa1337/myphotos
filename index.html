@@ -85,31 +85,67 @@
                     <p class="text-gray-400 mt-2">A collection of my favorite shots from around the world.</p>
                 </div>
 
-                                    <!-- Image Grid -->
+                <!-- Image Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <!-- Image 1 -->
-                    <div class="aspect-w-1 aspect-h-1">
-                        <img src="https://placehold.co/600x600/222/FFF?text=Landscape" alt="Landscape Photography" class="gallery-img w-full h-full object-cover rounded-lg cursor-pointer" onclick="openModal(this.src, this.alt)">
+                    <!-- Slideshow 1: Landscape -->
+                    <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative slideshow-container" id="gallery1" onclick="openGalleryModal('gallery1')">
+                        <img src="https://placehold.co/600x600/222/FFF?text=Landscape+1" alt="Landscape Photography 1" class="slide active w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/2a2a2a/FFF?text=Landscape+2" alt="Landscape Photography 2" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/313131/FFF?text=Landscape+3" alt="Landscape Photography 3" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/353535/FFF?text=Landscape+4" alt="Landscape Photography 4" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/3a3a3a/FFF?text=Landscape+5" alt="Landscape Photography 5" class="slide w-full h-full object-cover">
+                        <button class="slideshow-btn prev" onclick="changeSlide('gallery1', -1)">&#10094;</button>
+                        <button class="slideshow-btn next" onclick="changeSlide('gallery1', 1)">&#10095;</button>
                     </div>
-                    <!-- Image 2 -->
-                    <div class="aspect-w-1 aspect-h-1">
-                        <img src="https://placehold.co/600x600/333/FFF?text=Portrait" alt="Portrait Photography" class="gallery-img w-full h-full object-cover rounded-lg cursor-pointer" onclick="openModal(this.src, this.alt)">
+                    <!-- Slideshow 2: Portrait -->
+                    <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative slideshow-container" id="gallery2" onclick="openGalleryModal('gallery2')">
+                        <img src="https://placehold.co/600x600/333/FFF?text=Portrait+1" alt="Portrait Photography 1" class="slide active w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/3b3b3b/FFF?text=Portrait+2" alt="Portrait Photography 2" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/424242/FFF?text=Portrait+3" alt="Portrait Photography 3" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/464646/FFF?text=Portrait+4" alt="Portrait Photography 4" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/4a4a4a/FFF?text=Portrait+5" alt="Portrait Photography 5" class="slide w-full h-full object-cover">
+                        <button class="slideshow-btn prev" onclick="changeSlide('gallery2', -1)">&#10094;</button>
+                        <button class="slideshow-btn next" onclick="changeSlide('gallery2', 1)">&#10095;</button>
                     </div>
-                    <!-- Image 3 -->
-                    <div class="aspect-w-1 aspect-h-1">
-                        <img src="IMG_6108.JPG" alt="Nature Photography" class="gallery-img w-full h-full object-cover rounded-lg cursor-pointer" onclick="openModal(this.src, this.alt)">
+                    <!-- Slideshow 3: Nature -->
+                    <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative slideshow-container" id="gallery3" onclick="openGalleryModal('gallery3')">
+                        <img src="https://placehold.co/600x600/444/FFF?text=Nature+1" alt="Nature Photography 1" class="slide active w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/4c4c4c/FFF?text=Nature+2" alt="Nature Photography 2" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/515151/FFF?text=Nature+3" alt="Nature Photography 3" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/555555/FFF?text=Nature+4" alt="Nature Photography 4" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/595959/FFF?text=Nature+5" alt="Nature Photography 5" class="slide w-full h-full object-cover">
+                        <button class="slideshow-btn prev" onclick="changeSlide('gallery3', -1)">&#10094;</button>
+                        <button class="slideshow-btn next" onclick="changeSlide('gallery3', 1)">&#10095;</button>
                     </div>
-                    <!-- Image 4 -->
-                     <div class="aspect-w-1 aspect-h-1">
-                        <img src="https://placehold.co/600x600/555/FFF?text=Architecture" alt="Architecture Photography" class="gallery-img w-full h-full object-cover rounded-lg cursor-pointer" onclick="openModal(this.src, this.alt)">
+                    <!-- Slideshow 4: Architecture -->
+                     <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative slideshow-container" id="gallery4" onclick="openGalleryModal('gallery4')">
+                        <img src="https://placehold.co/600x600/555/FFF?text=Architecture+1" alt="Architecture Photography 1" class="slide active w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/5d5d5d/FFF?text=Architecture+2" alt="Architecture Photography 2" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/646464/FFF?text=Architecture+3" alt="Architecture Photography 3" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/686868/FFF?text=Architecture+4" alt="Architecture Photography 4" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/6c6c6c/FFF?text=Architecture+5" alt="Architecture Photography 5" class="slide w-full h-full object-cover">
+                        <button class="slideshow-btn prev" onclick="changeSlide('gallery4', -1)">&#10094;</button>
+                        <button class="slideshow-btn next" onclick="changeSlide('gallery4', 1)">&#10095;</button>
                     </div>
-                    <!-- Image 5 -->
-                     <div class="aspect-w-1 aspect-h-1">
-                        <img src="https://placehold.co/600x600/666/FFF?text=Travel" alt="Travel Photography" class="gallery-img w-full h-full object-cover rounded-lg cursor-pointer" onclick="openModal(this.src, this.alt)">
+                    <!-- Slideshow 5: Travel -->
+                     <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative slideshow-container" id="gallery5" onclick="openGalleryModal('gallery5')">
+                        <img src="https://placehold.co/600x600/666/FFF?text=Travel+1" alt="Travel Photography 1" class="slide active w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/6e6e6e/FFF?text=Travel+2" alt="Travel Photography 2" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/727272/FFF?text=Travel+3" alt="Travel Photography 3" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/767676/FFF?text=Travel+4" alt="Travel Photography 4" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/7a7a7a/FFF?text=Travel+5" alt="Travel Photography 5" class="slide w-full h-full object-cover">
+                        <button class="slideshow-btn prev" onclick="changeSlide('gallery5', -1)">&#10094;</button>
+                        <button class="slideshow-btn next" onclick="changeSlide('gallery5', 1)">&#10095;</button>
                     </div>
-                    <!-- Image 6 -->
-                     <div class="aspect-w-1 aspect-h-1">
-                        <img src="https://placehold.co/600x600/777/FFF?text=Street" alt="Street Photography" class="gallery-img w-full h-full object-cover rounded-lg cursor-pointer" onclick="openModal(this.src, this.alt)">
+                    <!-- Slideshow 6: Street -->
+                     <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden relative slideshow-container" id="gallery6" onclick="openGalleryModal('gallery6')">
+                        <img src="https://placehold.co/600x600/777/FFF?text=Street+1" alt="Street Photography 1" class="slide active w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/7f7f7f/FFF?text=Street+2" alt="Street Photography 2" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/868686/FFF?text=Street+3" alt="Street Photography 3" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/8a8a8a/FFF?text=Street+4" alt="Street Photography 4" class="slide w-full h-full object-cover">
+                        <img src="https://placehold.co/600x600/8e8e8e/FFF?text=Street+5" alt="Street Photography 5" class="slide w-full h-full object-cover">
+                        <button class="slideshow-btn prev" onclick="changeSlide('gallery6', -1)">&#10094;</button>
+                        <button class="slideshow-btn next" onclick="changeSlide('gallery6', 1)">&#10095;</button>
                     </div>
                 </div>
             </div>
@@ -204,6 +240,7 @@
 
 </body>
 </html>
+
 
 
 
