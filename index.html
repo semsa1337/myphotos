@@ -252,6 +252,14 @@
         </div>
     </div>
 
+    <!-- Lightbox Modal for single image view -->
+    <div id="lightbox-modal" class="fixed top-0 left-0 w-full h-full bg-black/95 flex items-center justify-center p-4 z-[60] hidden">
+        <button onclick="closeLightbox()" class="absolute top-4 right-5 text-gray-400 hover:text-white text-5xl font-bold z-10">&times;</button>
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 slideshow-btn">&#10094;</button>
+        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 slideshow-btn">&#10095;</button>
+        <img id="lightbox-img" src="" alt="Full-size view" class="max-w-[90vw] max-h-[90vh] object-contain">
+    </div>
+
 
     <script>
         // --- Mobile Navigation ---
@@ -283,12 +291,13 @@
             // 3. Populate the modal grid with images
             galleryImages.forEach(img => {
                 const imgContainer = document.createElement('div');
-                imgContainer.className = 'bg-gray-800 rounded-lg overflow-hidden aspect-w-1 aspect-h-1 modal-img-container'; // Added animation class
+                imgContainer.className = 'bg-gray-800 rounded-lg overflow-hidden aspect-w-1 aspect-h-1 modal-img-container cursor-pointer'; // Added cursor
                 const newImg = document.createElement('img');
                 newImg.src = img.src;
                 newImg.alt = img.alt;
                 newImg.className = 'w-full h-full object-cover';
                 imgContainer.appendChild(newImg);
+                imgContainer.addEventListener('click', () => openLightbox(newImg.src, galleryId));
                 galleryModalGrid.appendChild(imgContainer);
             });
 
@@ -313,10 +322,81 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal on Escape key press
+        // --- Lightbox Modal (for single image view) ---
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxPrevBtn = document.getElementById('lightbox-prev');
+        const lightboxNextBtn = document.getElementById('lightbox-next');
+
+        let currentLightboxImages = [];
+        let currentLightboxIndex = 0;
+
+        function openLightbox(imageSrc, galleryId) {
+            // 1. Get all image sources from the gallery
+            const galleryImages = document.querySelectorAll(`#${galleryId} img`);
+            currentLightboxImages = Array.from(galleryImages).map(img => img.src);
+
+            // 2. Find the index of the clicked image
+            currentLightboxIndex = currentLightboxImages.indexOf(imageSrc);
+            
+            // 3. Update the lightbox image source
+            updateLightboxImage();
+
+            // 4. Show the lightbox
+            lightboxModal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.add('hidden');
+        }
+
+        function updateLightboxImage() {
+            if (currentLightboxImages.length > 0) {
+                lightboxImg.src = currentLightboxImages[currentLightboxIndex];
+            }
+        }
+
+        function changeLightboxImage(direction) {
+            currentLightboxIndex += direction;
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = currentLightboxImages.length - 1;
+            } else if (currentLightboxIndex >= currentLightboxImages.length) {
+                currentLightboxIndex = 0;
+            }
+            updateLightboxImage();
+        }
+
+        lightboxPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            changeLightboxImage(-1);
+        });
+
+        lightboxNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            changeLightboxImage(1);
+        });
+
+        // --- Keyboard Navigation for Modals ---
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !galleryModal.classList.contains('hidden')) {
-                closeGalleryModal();
+            // If lightbox is open, its controls have priority
+            if (!lightboxModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+                if (e.key === 'ArrowLeft') {
+                    changeLightboxImage(-1);
+                }
+                if (e.key === 'ArrowRight') {
+                    changeLightboxImage(1);
+                }
+                return; // Stop further execution
+            }
+
+            // If only the gallery modal is open
+            if (!galleryModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    closeGalleryModal();
+                }
             }
         });
 
@@ -361,6 +441,7 @@
 
 </body>
 </html>
+
 
 
 
