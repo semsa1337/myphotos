@@ -74,6 +74,13 @@
         .slideshow-btn.next {
             right: 1rem;
         }
+        /* Added for modal image hover effect */
+        .modal-img-container {
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal-img-container:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -238,7 +245,7 @@
     <!-- Gallery Modal -->
     <div id="gallery-modal" class="fixed top-0 left-0 w-full h-full bg-black/90 flex items-center justify-center p-4 z-50 hidden">
         <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-4 md:p-6 relative">
-             <button onclick="closeGalleryModal()" class="absolute top-2 right-3 text-gray-400 hover:text-white text-4xl font-bold">&times;</button>
+             <button onclick="closeGalleryModal()" class="absolute top-2 right-3 text-gray-400 hover:text-white text-4xl font-bold z-10">&times;</button>
              <div id="gallery-modal-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <!-- Images will be injected here by JS -->
              </div>
@@ -276,7 +283,7 @@
             // 3. Populate the modal grid with images
             galleryImages.forEach(img => {
                 const imgContainer = document.createElement('div');
-                imgContainer.className = 'bg-gray-800 rounded-lg overflow-hidden aspect-w-1 aspect-h-1';
+                imgContainer.className = 'bg-gray-800 rounded-lg overflow-hidden aspect-w-1 aspect-h-1 modal-img-container'; // Added animation class
                 const newImg = document.createElement('img');
                 newImg.src = img.src;
                 newImg.alt = img.alt;
@@ -354,6 +361,8 @@
 
 </body>
 </html>
+
+
 
 
 
